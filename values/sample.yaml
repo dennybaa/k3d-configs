@@ -1,0 +1,28 @@
+## Run: cue eval main.cue values/sample.yaml --out=yaml
+
+## common for multiple-clusters
+## Note: options.k3s is only supported
+apply:
+  set:
+    # version: v1.27.4-k3s1
+    options:
+      k3s:
+        extraArgs:
+          - arg: --kubelet-arg=feature-gates=KubeletInUserNamespace=true
+            nodeFilters:
+              - all:*
+
+clusters:
+  milan:
+    servers: 1
+    options:
+      k3d:
+        disableLoadbalancer: true
+      k3s:
+        extraArgs:
+          - arg: --disable=traefik,servicelb,metrics-server,local-storage
+            nodeFilters:
+              - server:*
+
+  rome:
+    servers: 1
