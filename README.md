@@ -17,7 +17,7 @@ This setting is required to run k3d clusters on rootless podman (valid in my cas
 
 First download follow the [link to download cue](https://github.com/cue-lang/cue/releases/).
 
-Please look at the example in [values/samle.yaml]. The `clusters.{name}` objects define [k3d configfiles](https://k3d.io/v5.1.0/usage/configfile/) to generate. Note that there is `apply.set` helper to provide common settings for created clusters.
+Please look at the example in [values/sample.yaml](values/sample.yaml). The `clusters.{name}` objects define [k3d config files](https://k3d.io/v5.1.0/usage/configfile/) to generate. Note that there is `apply.set` helper to provide common settings for created clusters.
 
 Note: only common `options.k3s` can be provided.
 
