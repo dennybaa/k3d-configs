@@ -34,8 +34,6 @@ command: gen: {
 
     // Writes k3d configs
     writeConfigs: {
-        $dep: cueEval.$done
-
         info: cli.Print & {
             text: "To create clusters run the commands bellow:\n"
         }
@@ -45,6 +43,7 @@ command: gen: {
                 configPath: resultDir + "/\(r.metadata.name).yaml",
 
                 write: file.Create & {
+                    $dep: mkDir.$done
                     filename: configPath
                     contents: yaml.Marshal(r)
                 }
