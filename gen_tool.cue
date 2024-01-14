@@ -3,7 +3,7 @@ package main
 import (
     "encoding/yaml"
     "path"
-    "strings"
+    "regexp"
     "tool/exec"
     "tool/file"
     "tool/cli"
@@ -21,7 +21,7 @@ command: gen: {
 
     resultDir: path.Resolve(
         "clusters",
-        strings.TrimSuffix(path.Base(input, path.Unix), ".yaml"),
+        regexp.ReplaceAll(".\\w+$", path.Base(input, path.Unix), ""),
         path.Unix
     )
 
