@@ -1,0 +1,33 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: milan
+servers: 1
+subnet: auto
+options:
+  k3s:
+    extraArgs:
+    - arg: '--kubelet-arg=feature-gates=KubeletInUserNamespace=true'
+      nodeFilters:
+      - server:*
+      - agent:*
+    - arg: '--disable=metrics-server'
+      nodeFilters:
+      - server:*
+---
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: rome
+servers: 2
+subnet: auto
+options:
+  k3s:
+    extraArgs:
+    - arg: '--kubelet-arg=feature-gates=KubeletInUserNamespace=true'
+      nodeFilters:
+      - server:*
+      - agent:*
+    - arg: '--disable=metrics-server'
+      nodeFilters:
+      - server:*

@@ -1,0 +1,13 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: play
+servers: 1
+subnet: auto
+options:
+  k3s:
+    extraArgs:
+    - arg: '--kubelet-arg=feature-gates=KubeletInUserNamespace=true'
+      nodeFilters:
+      - server:*
+      - agent:*
